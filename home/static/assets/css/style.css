@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: rgb(129, 255, 192);
+}
+
+.full-page-content h1 {
+    /* Força o título a ocupar toda a largura disponível */
+    width: 100%; 
+    /* Garante que o elemento se comporte como um bloco padrão, forçando quebra de linha */
+    display: block; 
+}
+
+.grid {
+    padding: 30px;
+    padding-bottom: 40px;
+    max-width: 1400px;
+    margin: 0 auto ;
+    /*margin: top right bottom left;*/
+    /* fica centralizado*/
+    
+    /* 26/08/2025*/
+    display: flex;        
+      flex-wrap: wrap; 
+      overflow: auto;
+      
+}
+
+.grid::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid .col {
+    /* por padrão: display: block;*/
+    /*display: inline-block;*/
+    /*26/08/2025*/
+    /*26/08/2025*/
+    box-sizing: border-box;
+    width: 33.33%;
+    height: 400px;
+    float: left;
+    padding: 15px;
+
+}
+
+.grid .col-content {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; /* Centraliza o item horizontalmente */
+    align-items: top;    /* Centraliza o item verticalmente */
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    text-align: center;
+    /* Para fazer que nem fillet de AUTOCAD - bordas arredondadas em elementos*/
+    /* border-radius: 50px; */
+    /* border-radius: 30px 100px 30px 100px; */
+    /* Para fazer um círculo*/
+    border-radius: 10%;
+    box-shadow: -8px   8px   10px    10px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    /*       direita  cima    blur   espalhamento (quase como um padding para a sombra  */
+/*   no elemtno da direita ( o primeiro parâmetro se colocar INSET A SOMBRA VAI PARA DENTRO DO OBJETO)
+colocando virgula depois da primeira sombra, dá para colocar uma segunda sombra com os seus parâmetros individuais*/
+}
+
+/* ESSE É UM EXEMPLO REAL DE ONDE SE APLICARIA MEDIA QUERIES
+a medida que a tela for diminuindo eu aplica alguma regra do css e dimuniu o número de colunas
+*/
+/* isso indica que eu quero colocar breakpoints para fazer uma quebra do conteúdo
+a fim de facilitar a visualização das coisas, em telas muito pequenas os layouts
+devem ser diferentes do que em telas de pc*/
+
+.menu {
+    width: 100%;
+    position: fixed;
+    background-color: #5A3A28;
+    overflow: auto;
+    min-width: 0;
+}
+
+.menu ul li {
+    float: left;
+}
+
+.menu ul li a {
+    display: block;
+    color: white;
+    padding: 5px 8px;
+    text-decoration: none;
+    transition: all 500ms ease-in-out;
+}
+
+.menu ul li a:hover {
+    background-color: gray;
+}
+
+body {
+    font-family: "Domine", serif;
+    /*27 de setembro de 2025*/
+}
+.toda-pagina{
+    display:grid;
+    /*grid-template-columns: 1fr 300px; */
+    max-width: calc(100vw - 300px); /* Ajusta a altura para caber na tela */
+    /*height: 100vh;*/
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+}
+h1{
+    font-size:35px;
+    padding-left: 50px;
+}
+p{
+    font-size: 16px;
+   
+}
+.descricao{
+    padding:20px;
+}
+.full-page {    
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0 auto;
+    /* fica centralizado*/
+    width:calc(100vw-300px);
+}
+
+.full-page-content {
+    padding: 0 40px;
+    max-width: 1400px;
+    padding-top: 80px;
+    padding-bottom: 25px;
+    min-height: 100vh;
+    /*background-color: aqua;*/
+}
+#Bebidas-content{
+    background-color: #E7B07A;
+}
+#Milkshake-content{
+    background-color:#E7D3BE;
+
+}
+#Pizza-content{
+    background-color:#E7B07A;
+
+}
+#Hamburguer-content{
+    background-color: #E7B07A;
+
+}
+#HotDog-content{
+    background-color: #F5E6D3;
+}
+@media all and (max-width:700px) {
+    .grid .col {
+        width: 100%;
+    }
+}
+
+@media(min-width:701px) and (max-width: 1000px) {
+
+    /* é isso que o eu quero sobreescrever eu quero 1 coluna nessa nova versão */
+    .grid .col {
+        width: 50%;
+    }
+}
+
+@media(min-width:1001px) and (max-width: 1400px) {
+
+    /* é isso que o eu quero sobreescrever eu quero 1 coluna nessa nova versão */
+    .grid .col {
+        width: 33.33%;
+    }
+}
+
+@media all and (min-width: 1400px) {
+
+    /* é isso que o eu quero sobreescrever eu quero 1 coluna nessa nova versão */
+    .grid .col {
+        width: 25%;
+    }
+}
+/*27 de setembro de 2025*/
+.carrinho{
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh; /* 100vh significa 100% da altura da viewport (tela) */
+    background-color:#8F3A2A; /* Exemplo de cor de fundo */
+    /*border-left: 3px solid #F5E6D3; /* Exemplo de borda */
+    margin-top: 63px;
+    overflow-y: auto;
+    color: black;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+li {
+    padding: 15px;
+    border-bottom: 1px solid #5A3A28;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+form {
+    display: inline;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[name="adicionar_item"] {
+    background-color: #8F3A2A;
+    color: white;
+    width: 80%; /* Dê uma largura menor que 100% */
+    display: block; /* Ocupa a própria linha */
+    margin: 5px auto; /* Centraliza horizontalmente */
+}
+
+button[name="remover_item_por_posicao"] {
+    background-color: #8F3A2A;
+    color: white;
+}
+button[name="abrir_nota"] {
+    background-color: #8F3A2A;
+    color: white;
+}
+button{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+/* Estilo para a mensagem de carrinho vazio */
+body > p {
+    color: #666;
+    font-style: italic;
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+.produto-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-height: 150px;
+}
+
+/* Estilo para o carrinho */
+.carrinho-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #E7B07A;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carrinho-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.carrinho-item:last-child {
+    border-bottom: none;
+}
+
+.carrinho-item .item-info h3 {
+    margin: 0 0 5px 0;
+}
+
+.btn-adicionar-carrinho, .btn-remover {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-adicionar-carrinho {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-remover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.carrinho-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.carrinho-vazio {
+    text-align: center;
+    padding: 50px;
+}
+
+/* Passo 2A: Centralização do Bloco (Flexbox) */
+.imagem-container {
+    /* Define o container para centralização total */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: top;     /* Centraliza verticalmente (se o container tiver altura definida) */
+    
+    /* Opcional: Garante que o container use a largura total disponível */
+    width: 100%;
+    /* Opcional: Altura mínima para mostrar a centralização vertical */
+    /*min-height: 120px; */
+}
+
+/* Passo 2B: O Alvo (a imagem) */
+.imagem-quadrada {
+    /* 1. Tamanho Fixo */
+    max-width: 150px;
+    height: 110px;
+    
+    /* 2. Propriedade Anti-Distorção (MUITO IMPORTANTE) */
+    /* Garante que a imagem preencha a área de 100x100px, 
+       cortando o excesso (cover), mantendo a proporção original. 
+    */
+    object-fit: cover;
+    
+    /* 3. Estética (Opcional) */
+    border-radius: 5px; /* Bordas arredondadas */
+    display: block; /* Remove possíveis margens de linha */
+}
+
+/* Estilo para cada item individual no carrinho */
+.item-carrinho {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+/* Estilo para a nota que já foi salva */
+.item-carrinho .nota-salva {
+    color: #555;
+    font-style: italic;
+    font-size: 10px;
+}
+
+/* MUDANÇA AQUI:
+   A regra "display: inline-block;" foi REMOVIDA.
+   
+   Sem ela, os formulários (que contêm os botões) 
+   voltam ao comportamento padrão de bloco,
+   ou seja, um embaixo do outro.
+*/
+
+.carrinho ul li {
+    display: flex;
+    flex-wrap: wrap;
+}
+/* Estilo para a caixa de edição de nota (que aparece) */
+.caixa-edicao-nota {
+    width: 100%;
+    margin-top: 10px; /* Bota espaço entre os botões e a caixa */
+    padding: 10px;
+    border: 1px dashed #007bff; /* Borda azul tracejada */
+    background-color: #f8f9fa; /* Um fundo cinza claro */
+}
+
+/* Faz a caixa de texto ocupar a largura total da caixa de edição */
+.caixa-edicao-nota textarea {
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    margin-bottom: 5px;
+}
+.nota_salva_css{
+    width:100%;
+    padding: 7px;
+    color:#666;
+}
+/* O botão "OK (Salvar Nota)" já está dentro da 
+   "caixa-edicao-nota", que por si só já fica 
+   abaixo dos outros botões.
+*/
+
+
+/* (Opcional) Estilos dos botões, mantidos do exemplo anterior */
+.btn-editar {
+    background-color: #007bff; /* Azul */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn-remover {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,444 @@
+{% load static %} <!-- CARREGA A TAG NO TOPO DO TEMPLATE adicionado dia 14 de setembro-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="assets/css/stules.css">-->
+    <!--<link rel="stylesheet" href="assets/css/style.css"> comentado dia 14 de setembro-->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+    <!-- caminho relativo de static-->
+</head>
+
+<body>
+
+
+
+    <div class="toda-pagina">
+        {% comment %} <form method="POST" action="{% url 'processar_pedido' %}"><!-- 17 de setembro-->
+            {% csrf_token %}
+            <input type="hidden" name="pedido" value="pizza">
+            <button type="submit">Fazer pedido</button>
+        </form> <!-- 17 de setembro--> {% endcomment %}
+
+        <h1>{% block texto %} {% endblock texto %}</h1>
+        <!--  Essa linha de cima funcionou-->
+        <nav class="menu">
+            <ul>
+                <li><a href="{% url 'login_pedidos' %}">🔐 Fazer Login</a></li>
+                {% comment %} <li><a href="#home">Home</a></li> {% endcomment %}
+                <li><a href="#Hamburguer">Sanduíches</a></li>
+                <li><a href="#HotDogs">HotDogs</a></li>
+                <li><a href="#Pizzas">Pizzas</a></li>
+                <li><a href="#Milkshakes">Milkshakes</a></li>
+                <li><a href="#Bebidas">Bebidas</a></li>
+            </ul>
+
+        </nav>
+        <hr>
+        <div class="carrinho">
+            <h1>Seu Carrinho</h1>
+            {% if itens_carrinho %}
+            <ul>
+                {% for item in itens_carrinho %}
+                <li>
+                    {{ item.nome }} - R$ {{ item.preco }}
+                    {% if item.nota_atual %}
+                        <p class = "nota_salva_css"><strong>Nota:</strong> <em>{{ item.nota_atual }}</em></p>
+                    {% endif %}
+                    <form method="POST"><!-- style="display: inline-block;"-->
+                        {% csrf_token %}
+                        <input type="hidden" name="posicao_para_editar" value="{{ item.posicao }}">
+
+                        {% if item.posicao|stringformat:"s" == posicao_para_editar %}
+                            <button type="submit" name="fechar_edicao">Fechar Edição</button>
+                        {% else %}
+                            <button type="submit" name="editar_nota">Adicionar/Editar Nota</button>
+                        {% endif %}
+                    </form>
+                    <form method="post" ><!--style="display: inline;"-->
+                        {% csrf_token %}
+                        <button type="submit" name="remover_item_por_posicao" value="{{ item.posicao }}">
+                            Remover
+                        </button>
+
+                        <button type="submit" name="abrir_nota" value="{{ item.posicao }}">
+                            Nota
+                        </button>
+                    </form>
+                    {% if item.posicao|stringformat:"s" == posicao_para_editar %}
+                        <div class="caixa-edicao-nota" > <!-- style="margin-top: 10px;"-->
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="posicao_item_nota" value="{{ item.posicao }}">
+                                
+                                <textarea name="nota_adicional" rows="3" placeholder="Ex: sem cebola, ponto da carne...">{{ item.nota_atual }}</textarea>
+                                
+                                <button type="submit" name="salvar_nota">OK (Salvar Nota)</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            <p>Total: R$ {{ total }}</p>
+            {% else %}
+            <p>Seu carrinho está vazio.</p>
+            {% endif %}
+            <form id="meuFormulario" action="" method="post" onsubmit="return confirm('Tem certeza?');">
+                {% csrf_token %}
+
+                <label for="numeroMesa">Número da Mesa:</label>
+
+                <input type="number" id="numeroMesa" name="numero_mesa" min="1" max="20" step="1" required
+                    placeholder="Digite um número entre 1 e 20" value="{{ valor_mesa_invalido|default:'' }}">
+
+                {% if erro_mesa %}
+                <p style="color: red; font-weight: bold;">{{ erro_mesa }}</p>
+                {% endif %}
+                
+                <label for="nomeCliente">Nome do Cliente:</label>
+
+                    <input type="text" 
+                        id="nomeCliente" 
+                        name="nome_cliente" 
+                        required
+                        maxlength="50"
+                        placeholder="Digite o nome do cliente" 
+                        class="form-control"
+                        value="{{ valor_cliente|default:'' }}">
+
+                    {% if erro_cliente %}
+                        <p style="color: red; font-weight: bold;">{{ erro_cliente }}</p>
+                    {% endif %}
+
+                {% comment %} <form method="POST" action="{% url 'confirmar_pedido' %}">
+                    {% csrf_token %} 
+                    <button type="submit" name="finalizar_pedido">Finalizar Pedido</button>
+                 </form>  {% endcomment %}
+  
+                <button type="submit">Finalizar</button>
+                
+            </form>
+
+        </div>
+        <section id="Hamburguer" class="full-page Hamburguer">
+            <!-- o ID será usado como target-->
+            <div id="Hamburguer-content" class="grid full-page-content">
+                <h1>Sanduíches</h1>
+                <p class="descricao"></p>
+
+                <div class="grid">
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_sanduiches.0.getnome}}<br></h3>
+                            <p> {{ lista_de_sanduiches.0.getingredientes}}<br></p>
+                            <p> R$ {{lista_de_sanduiches.0.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_sanduiches.0.getimagem }}"
+                                    alt="Descrição da Imagem" class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_sanduiches.0.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_sanduiches.1.getnome}}<br></h3>
+                            <p> {{ lista_de_sanduiches.1.getingredientes}}</p>
+                            <p> R$ {{lista_de_sanduiches.1.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_sanduiches.1.getimagem }}"
+                                    alt="Descrição da Imagem" class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_sanduiches.1.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_sanduiches.2.getnome}}<br></h3>
+                            <p> {{ lista_de_sanduiches.2.getingredientes}}</p>
+                            <p> R$ {{lista_de_sanduiches.2.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_sanduiches.2.getimagem }}"
+                                    alt="Descrição da Imagem" class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_sanduiches.2.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="HotDogs" class="full-page Hotdogs">
+            <!-- o ID será usado como target-->
+            <div id="HotDog-content" class="full-page-content">
+                <h1>HotDogs</h1>
+                <p class="descricao"></p>
+
+                <div class="grid">
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_hotdogs.0.getnome}}<br></h3>
+                            <p> Pão normal, 2 salsichas, batata palha, mostarda, ketchup e vinagrete.</p>
+                            <p> R$ {{lista_de_hotdogs.0.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_hotdogs.0.getimagem }}" alt="Descrição da Imagem"
+                                    class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_hotdogs.0.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_hotdogs.1.getnome}}<br></h3>
+                                <p> Pão normal, 2 salsichas, batata palha</p>
+                            <p> R$ {{lista_de_hotdogs.1.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_hotdogs.1.getimagem }}" alt="Descrição da Imagem"
+                                    class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_hotdogs.1.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_hotdogs.2.getnome}}<br></h3>
+                            <p> Pão normal, frango desfiado, batata palha, mostarda, ketchup e vinagrete</p>
+                            <p> R$ {{lista_de_hotdogs.2.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_hotdogs.2.getimagem }}" alt="Descrição da Imagem"
+                                    class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_hotdogs.2.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Pizzas" class="full-page Pizzas">
+            <!-- o ID será usado como target-->
+            <div id="Pizza-content" class="full-page-content grid">
+                <h1>Pizzas</h1>
+                <p class="descricao"></p>
+
+                <!-- <div class="grid">-->
+                <div class="col">
+                    <div class="col-content">
+                        <h3>{{ lista_de_pizzas.0.getnome}}<br></h3>
+                            <p> {{ lista_de_pizzas.0.getingredientes}}</p>
+                        <p> R$ {{lista_de_pizzas.0.getpreco}}</p>
+                        <div class="imagem-container">
+                            <img src="{{ MEDIA_URL }}{{ lista_de_pizzas.0.getimagem }}" alt="Descrição da Imagem"
+                                class="imagem-quadrada">
+                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="adicionar_item" value="{{ lista_de_pizzas.0.getnome }}">
+                                Adicionar ao Carrinho
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-content">
+                        <h3>{{ lista_de_pizzas.1.getnome}}<br></h3>
+                            <p> {{ lista_de_pizzas.1.getingredientes}}</p>
+                        <p> R$ {{lista_de_pizzas.1.getpreco}}</p>
+                        <div class="imagem-container">
+                            <img src="{{ MEDIA_URL }}{{ lista_de_pizzas.1.getimagem }}" alt="Descrição da Imagem"
+                                class="imagem-quadrada">
+                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="adicionar_item" value="{{ lista_de_pizzas.1.getnome }}">
+                                Adicionar ao Carrinho
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="col-content">
+                        <h3>{{ lista_de_pizzas.2.getnome}}<br></h3>
+                        <p> {{ lista_de_pizzas.2.getingredientes}}</p>
+                        <p> R$ {{lista_de_pizzas.2.getpreco}}</p>
+                        <div class="imagem-container">
+                            <img src="{{ MEDIA_URL }}{{ lista_de_pizzas.2.getimagem }}" alt="Descrição da Imagem"
+                                class="imagem-quadrada">
+                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="adicionar_item" value="{{ lista_de_pizzas.2.getnome }}">
+                                Adicionar ao Carrinho
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--</div>-->
+        </section>
+        <section id="Milkshakes" class="full-page Milkshakes">
+            <!-- o ID será usado como target-->
+            <div id="Milkshake-content" class="full-page-content">
+                <h1>Milkshakes</h1>
+                <p class="descricao"></p>
+
+                <div class="grid">
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_milkshakes.0.getnome}}<br></h3>
+                            <p> {{lista_de_milkshakes.0.getcapacidade}}</p>
+                            <p> {{ lista_de_milkshakes.0.getingredientes}}</p>
+                            <p> R$ {{lista_de_milkshakes.0.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_milkshakes.0.getimagem }}" alt="Descrição da Imagem"
+                                    class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_milkshakes.0.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_milkshakes.1.getnome}}<br></h3>
+                            <p> {{lista_de_milkshakes.1.getcapacidade}}</p>
+                            <p> {{ lista_de_milkshakes.1.getingredientes}}</p>
+                            <p> R$ {{lista_de_milkshakes.1.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_milkshakes.1.getimagem }}" alt="Descrição da Imagem"
+                                    class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_milkshakes.1.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_milkshakes.2.getnome}}<br></h3>
+                            <p> {{lista_de_milkshakes.2.getcapacidade}}</p>
+                            <p> {{ lista_de_milkshakes.2.getingredientes}}</p>
+                            <p> R$ {{lista_de_milkshakes.2.getpreco}}</p>
+                            <div class="imagem-container">
+                                <img src="{{ MEDIA_URL }}{{ lista_de_milkshakes.2.getimagem }}" alt="Descrição da Imagem"
+                                    class="imagem-quadrada">
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_milkshakes.2.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Bebidas" class="full-page Bebidas">
+            <!-- o ID será usado como target-->
+            <div id="Bebidas-content" class="full-page-content">
+                <h1>Bebidas</h1>
+                <p class="descricao"></p>
+
+                <div class="grid">
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_bebidas.0.getnome}}<br></h3>
+                            <p> {{lista_de_bebidas.0.getcapacidade}}</p>
+                            <p> R$ {{lista_de_bebidas.0.getpreco}}</p>
+                                <div class="imagem-container">
+                                    <img src="{{ MEDIA_URL }}{{ lista_de_bebidas.0.getimagem }}" alt="Descrição da Imagem"
+                                        class="imagem-quadrada">
+                                </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_bebidas.0.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_bebidas.1.getnome}}<br></h3>
+                            <p> {{lista_de_bebidas.1.getcapacidade}}</p>
+                            <p> R$ {{lista_de_bebidas.1.getpreco}}</p>
+                                <div class="imagem-container">
+                                    <img src="{{ MEDIA_URL }}{{ lista_de_bebidas.1.getimagem }}" alt="Descrição da Imagem"
+                                        class="imagem-quadrada">
+                                </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_bebidas.1.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col-content">
+                            <h3>{{ lista_de_bebidas.2.getnome}}<br></h3>
+                            <p> {{lista_de_bebidas.2.getcapacidade}}</p>
+                            <p> R$ {{lista_de_bebidas.2.getpreco}}</p>
+                                <div class="imagem-container">
+                                    <img src="{{ MEDIA_URL }}{{ lista_de_bebidas.2.getimagem }}" alt="Descrição da Imagem"
+                                        class="imagem-quadrada">
+                                </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="adicionar_item" value="{{ lista_de_bebidas.2.getnome }}">
+                                    Adicionar ao Carrinho
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
+
+
+<!--
+tem como fazer LINKS DE ÂNCORA, ELES NÃO APONTAM PARA OUTRA PÁGINA, MAS PARA A MESMA
+de acordo com um ID
+-->

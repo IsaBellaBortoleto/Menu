@@ -40,7 +40,7 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
   
 <img 
   src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/meuspedidos.png" 
-  width="800"
+  width="500"
 />
 
 
@@ -57,12 +57,12 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
 />
 
 <img 
-  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_edit_menor.png" 
+  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_edit.png" 
   width="800"
 />
 
 <img 
-  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_pedidos_menor.png" 
+  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_pedidos.png" 
   width="800"
 />
 

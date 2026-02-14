@@ -44,6 +44,7 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
 />
 
 
+
 ### Para o Administrador:
 * RF12: Login seguro com usuário e senha.
 * RF13: Editar informações de produtos e marcar itens como esgotados.
@@ -55,8 +56,15 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
   width="300"
 />
 
-<img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_edit.png">
-<img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_pedidos.png">
+<img 
+  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_edit_menor.png" 
+  width="300"
+/>
+
+<img 
+  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_pedidos_menor.png" 
+  width="300"
+/>
 
 ## 📊 Estimativa de Esforço (Planning Poker) 
 O projeto foi estimado em um esforço total de 45 horas de desenvolvimento para os casos de uso mapeados[cite: 182].

@@ -1,44 +1,43 @@
-## <h1 align="center">MENU</h1>
-## <h1 align="center">Cardápio Digital </h1>
+<h1 align="center">MENU</h1>
+<h2 align="center" style="font-weight: normal; font-size: 1.2em;">
+  Cardápio Digital
+</h2>
+
 
 ## 📝 Descrição do Projeto
-Este projeto tem a finalidade de automatizar a realização de pedidos em estabelecimentos de alimentação de forma simples e direta[cite: 35]. O objetivo geral é criar um cardápio online que pode ser acessado por dispositivos móveis[cite: 37].
+Este projeto tem a finalidade de automatizar a realização de pedidos em estabelecimentos de alimentação de forma simples e direta. O objetivo geral é criar um cardápio online que pode ser acessado por dispositivos móveis.
 
 ### Objetivos Específicos:
-* Automatizar o processo de realização de pedidos online[cite: 39].
-* Flexibilizar e agilizar o processo de pedidos[cite: 40].
-* Permitir um controle mais preciso para a equipe do estabelecimento[cite: 41].
+* Automatizar o processo de realização de pedidos online.
+* Flexibilizar e agilizar o processo de pedidos.
+* Permitir um controle mais preciso para a equipe do estabelecimento.
 
-## 🚀 Status do Projeto
-* Versão Atual: 1.2[cite: 7].
-* Data da Última Revisão: 18/11/2025[cite: 14].
-* Local de Desenvolvimento: Curitiba[cite: 8].
+## 👥 Equipe de Desenvolvimento 
+* Bruna Medeiros Teixeira
+* Guilherme de Souza Carneiro Garcia
+* Laura Knoll Garcia de Oliveira
+* Isabela Bella Bortoleto
 
 ## 🛠️ Tecnologias e Ferramentas Utilizadas
-* Linguagem: Python[cite: 108, 195].
-* Framework/Bibliotecas: Django e PyMySQL[cite: 108].
-* Banco de Dados: MySQL (Relacional)[cite: 108, 171].
-* Ferramentas de Desenvolvimento: Visual Studio Code[cite: 108, 205].
-* Versionamento: GitHub[cite: 110, 172].
-* Design e Modelagem: Miro, Astah e planos estudantis do GitHub[cite: 85].
+* Linguagem: Python.
+* Framework/Bibliotecas: Django e PyMySQL.
+* Banco de Dados: MySQL (Relacional).
+* Ferramentas de Desenvolvimento: Visual Studio Code.
+* Versionamento: GitHub.
+* Design e Modelagem: Miro, Astah e planos estudantis do GitHub.
 
-## 👥 Equipe de Desenvolvimento [cite: 11]
-* Bruna Medeiros Teixeira[cite: 11].
-* Guilherme de Souza Carneiro Garcia[cite: 11].
-* Laura Knoll Garcia de Oliveira[cite: 11].
-* Isabela Bella Bortoleto[cite: 11].
 
-## ⚙️ Funcionalidades Principais [cite: 217]
+## ⚙️ Funcionalidades Principais 
 
 ### Para o Cliente (Usuário):
-* RF01: Acesso ao cardápio via QR Code ou link[cite: 141].
-* RF04: Adicionar itens ao carrinho de pedidos[cite: 144].
-* RF06: Alterar itens específicos (ex: "sem cebola")[cite: 146].
-* RF10: Visualizar status do pedido (recebido, em preparo, atrasado)[cite: 150].
-* RF11: Reportar problemas com o pedido[cite: 151].
+* RF01: Acesso ao cardápio via QR Code ou link.
+* RF04: Adicionar itens ao carrinho de pedidos.
+* RF06: Alterar itens específicos (ex: "sem cebola").
+* RF10: Visualizar status do pedido (recebido, em preparo, atrasado).
+* RF11: Reportar problemas com o pedido.
 
 ### Para o Administrador:
-* RF12: Login seguro com usuário e senha[cite: 152].
+* RF12: Login seguro com usuário e senha.
 * RF13: Editar informações de produtos e marcar itens como esgotados[cite: 153].
 * RF14: Visualizar novos pedidos com detalhes de mesa e cliente[cite: 154].
 * RF15: Atualizar status do preparo dos pedidos[cite: 156].

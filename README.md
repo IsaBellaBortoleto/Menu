@@ -73,4 +73,4 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
 * Integração com sistemas de controle de estoque.
 * Geração de relatórios detalhados de desempenho administrativo.
 
-Para mais informações, leia o [artigo disponível no repositório.](https://github.com/IsaBellaBortoleto/AirDrums/blob/main/Artigo.pdf)
+Para mais informações, leia o [artigo disponível no repositório.](https://github.com/IsaBellaBortoleto/Menu/blob/main/Card%C3%A1pioDigital_EntregaFinal_3.pdf)

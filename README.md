@@ -53,17 +53,17 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
 
 <img 
   src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_painelmenor.png" 
-  width="300"
+  width="100"
 />
 
 <img 
   src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_edit_menor.png" 
-  width="300"
+  width="500"
 />
 
 <img 
   src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_pedidos_menor.png" 
-  width="300"
+  width="500"
 />
 
 ## 📊 Estimativa de Esforço (Planning Poker) 

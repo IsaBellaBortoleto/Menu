@@ -37,10 +37,12 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
 * RF06: Alterar itens específicos (ex: "sem cebola").
 * RF10: Visualizar status do pedido (recebido, em preparo, atrasado).
 * RF11: Reportar problemas com o pedido.
+  
 <img 
   src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/pedidos_menor.png" 
-  width="50%"
+  width="300"
 />
+
 
 ### Para o Administrador:
 * RF12: Login seguro com usuário e senha.

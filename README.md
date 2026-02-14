@@ -40,7 +40,7 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
   
 <img 
   src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/pedidos_menor.png" 
-  width="300"
+  width="800"
 />
 
 

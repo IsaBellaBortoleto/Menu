@@ -1,8 +1,9 @@
 <h1 align="center">
   MENU<br>
-  <span>Cardápio Digital</span>
+  <span style="font-size: 0.6em; font-weight: normal; display: block; margin-top: 8px;">
+    Cardápio Digital
+  </span>
 </h1>
-
 
 
 ## 📝 Descrição do Projeto

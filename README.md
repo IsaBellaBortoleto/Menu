@@ -4,6 +4,9 @@
     Cardápio Digital
   </span>
 </h1>
+<img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/home.png">
+
+
 
 
 ## 📝 Descrição do Projeto

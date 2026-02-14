@@ -1,7 +1,8 @@
-<h1 align="center">MENU</h1>
-<h2 align="center" style="font-weight: normal; font-size: 1.2em;">
-  Cardápio Digital
-</h2>
+<h1 align="center">
+  MENU<br>
+  <span>Cardápio Digital</span>
+</h1>
+
 
 
 ## 📝 Descrição do Projeto

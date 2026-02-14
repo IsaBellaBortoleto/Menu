@@ -50,8 +50,11 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
 * RF14: Visualizar novos pedidos com detalhes de mesa e cliente.
 * RF15: Atualizar status do preparo dos pedidos.
 
+<img 
+  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_painelmenor.png" 
+  width="300"
+/>
 
-<img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_painelmenor.png">
 <img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_edit.png">
 <img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_pedidos.png">
 

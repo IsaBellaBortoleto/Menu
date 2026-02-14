@@ -1,4 +1,5 @@
-# Cardápio Digital - Fastfood Burguer [cite: 1, 5]
+## <h1 align="center">MENU</h1>
+## <h1 align="center">Cardápio Digital </h1>
 
 ## 📝 Descrição do Projeto
 Este projeto tem a finalidade de automatizar a realização de pedidos em estabelecimentos de alimentação de forma simples e direta[cite: 35]. O objetivo geral é criar um cardápio online que pode ser acessado por dispositivos móveis[cite: 37].

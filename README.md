@@ -39,7 +39,7 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
 * RF11: Reportar problemas com o pedido.
   
 <img 
-  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/pedidos_menor.png" 
+  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/meuspedidos.png" 
   width="800"
 />
 

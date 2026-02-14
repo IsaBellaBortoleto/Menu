@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-zc17z*i#5#(5hx4k8x77g0u$px5x2ddvm@0)5k_ktliz@i_)6^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
 
 # Application definition
@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
-    'pedidos',
+    'rest_framework',      # API REST
+    'corsheaders',         # Lovable
+    'menu_app',            # app principal
+    'home',                # home app
+    'pedidos',             # pedidos app
 ]
 
 #teste pro login
@@ -46,7 +49,9 @@ LOGIN_URL = '/login/'
 #não faço ideia do que faz
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # <-- PRIMEIRO PARA CORS FUNCIONAR
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.gzip.GZipMiddleware',  # Compressao GZIP para performance
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -56,6 +61,21 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'CardapioDigital.urls'
+
+# Permitir o frontend Lovable e localhost acessar a API
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",     # Lovable local (Vite)
+    "http://localhost:5173",     # Vite dev server
+    "http://localhost:5174",     # Vite dev server (porta alternativa)
+    "http://localhost:8080",     # Fallback
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",     # Vite dev server (porta alternativa)
+    "http://127.0.0.1:8080",
+    "https://id-preview--25aaa5da-b466-487f-ad78-d21e18da363f.lovable.app",  # Seu domínio Lovable
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 TEMPLATES = [
     {
@@ -144,3 +164,46 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'Imagens')
 
 # Prefixo de URL que o navegador usará para acessar a pasta acima
 MEDIA_URL = '/media/'
+
+# Performance - Cache HTTP para imagens (30 dias)
+if not DEBUG:
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_SSL_REDIRECT = True
+
+# Cache de requisições GET por 5 minutos
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 300
+
+# ============================================================
+# OTIMIZAÇÃO: GZIP E CACHE HEADERS
+# ============================================================
+
+# Força compressão GZIP mesmo para respostas pequenas
+GZIP_MIN_LENGTH_BYTES = 200  # Comprime tudo acima de 200 bytes
+
+# Nível de compressão (1-9, padrão 6)
+# 9 = máxima compressão (mais CPU), 1 = mínima (menos CPU)
+GZIP_LEVEL = 6
+
+# Tipos de conteúdo que serão comprimidos
+GZIP_SUPPORTED_TYPES = (
+    'application/javascript',
+    'application/json',
+    'text/css',
+    'text/html',
+    'text/plain',
+    'text/xml',
+    'application/xml',
+    'application/xml+rss',
+    'application/atom+xml',
+)
+
+# Cache headers para imagens (304 Not Modified)
+if not DEBUG:
+    # Images: cache por 30 dias
+    SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+    
+# Configuração de cache para assets estáticos
+DATA_UPLOAD_MAX_MEMORY_SIZE = 2621440  # 2.5 MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440  # 2.5 MB

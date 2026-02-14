@@ -3,51 +3,28 @@ URL configuration for CardapioDigital project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.http import HttpResponse
-from home import views as homeViwes
-from pedidos import views as pedViews
-
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-#teste pro negócio do login
-from django.urls import include
+from home import views as homeViews
+from pedidos import views as pedViews
 
-#urlpatterns = [
- #   path('admin/', admin.site.urls),
-  #  path('', homeViwes.home), #não comça url com barra, se fora vazia não coloca barra
-   # path('pedidos/', pedViews.pedidos),
-#]
 urlpatterns = [
     path('admin/', admin.site.urls),    
-    path('', homeViwes.home , name='home'), #não comça url com barra, se fora vazia não coloca barra
+    path('', homeViews.home, name='home'),
     path('pedidos/', pedViews.pedidos),
-    path('sucesso/', homeViwes.pagina_de_sucesso, name='pagina_de_sucesso'),
+    path('sucesso/', homeViews.pagina_de_sucesso, name='pagina_de_sucesso'),
+    path('finalizar-pedido/', homeViews.finalizar_pedido_view, name='finalizar_pedido'),
     path('', include('pedidos.urls')),
-    path('finalizar-pedido/', homeViwes.finalizar_pedido_view, name='finalizar_pedido'),    
+    # Incluir a API REST do menu_app
+    path('', include('menu_app.urls')),
 ]
+
 # Adiciona o serviço de arquivos de mídia se estiver em modo de desenvolvimento
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-    #path('pedidos/', pedViews.pedidos, name='pedidos'),
-    # Mapeia a URL 'carrinho/' para a view listar_carrinho
-    #path('carrinho/', homeViwes.listar_carrinho, name='listar_carrinho'),
-
-    # Mapeia a URL para adicionar um item.
-    # A URL terá o formato: /carrinho/adicionar/nome_produto/
     #path('carrinho/adicionar/<str:nome_produto>/', homeViwes. adicionar_item, name='adicionar_item'),
 
     # Mapeia a URL para remover um item.

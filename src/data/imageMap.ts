@@ -1,0 +1,17 @@
+export const imageMap: Record<string, string> = {
+  "Coca-Cola": "/imagens/CocaCola.webp",
+  "Guaraná": "/imagens/Guarana.webp",
+  "Hot Dog Tradicional": "/imagens/HotDogTradicional.webp",
+  "Hot Dog Frango": "/imagens/HotDogFrango.webp",
+  "Hot Dog Não Tradicional": "/imagens/HotDogNaoTradicional.webp",
+  "Sanduíche Fish": "/imagens/SanduicheFish.webp",
+  "Sanduíche Chicken": "/imagens/SanduicheChicken.webp",
+  "Sanduíche Tradicional": "/imagens/SanduicheTradicional.webp",
+  "Pizza Calabresa": "/imagens/PizzaCalabresa.webp",
+  "Pizza Frango": "/imagens/PizzaFrango.webp",
+  "Pizza Ricota": "/imagens/PizzaRicota.webp",
+  "Milkshake Chocolate": "/imagens/MilkshakeChocolatudo.webp",
+  "Milkshake Moranguete": "/imagens/MilkshakeMoranguete.webp",
+  "Milkshake Kit Kat": "/imagens/MilkshakeKitKat.webp",
+  "Suco Vale": "/imagens/SucoVale.webp",
+};

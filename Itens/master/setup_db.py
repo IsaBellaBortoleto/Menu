@@ -2,8 +2,8 @@ import pymysql
 
 connection = pymysql.connect(
     host='localhost',          
-    user='usuario_python',  
-    password='senha123',      
+    user='root',  
+    password='1234',      
     charset= 'utf8mb4'  
 )
 
@@ -18,7 +18,7 @@ with connection :
         sql = ("USE cardapio_digital")
         cursor.execute(sql)
 
-        cursor.execute('DROP TABLE sanduiche')
+        cursor.execute('DROP TABLE IF EXISTS sanduiche')
 
         #cria tabela sanduiche
         sql = (
@@ -73,7 +73,7 @@ with connection :
         cursor.executemany(sql, dados)
 
         #cria tabela bebida
-        cursor.execute('DROP TABLE bebida')
+        cursor.execute('DROP TABLE IF EXISTS bebida')
 
         sql = (
             'CREATE TABLE IF NOT EXISTS bebida ('
@@ -109,7 +109,7 @@ with connection :
         cursor.executemany(sql, dados)
 
         #cria tabela milkshake
-        cursor.execute('DROP TABLE milkshake')
+        cursor.execute('DROP TABLE IF EXISTS milkshake')
 
         sql = (
             'CREATE TABLE IF NOT EXISTS milkshake ('
@@ -161,7 +161,7 @@ with connection :
 
         #cria tabela pizza 
 
-        cursor.execute('DROP TABLE pizza')
+        cursor.execute('DROP TABLE IF EXISTS pizza')
 
         sql = (
             'CREATE TABLE IF NOT EXISTS pizza ('
@@ -215,7 +215,7 @@ with connection :
 
         #cria tabela hotdog
 
-        cursor.execute('DROP TABLE hotdog')
+        cursor.execute('DROP TABLE IF EXISTS hotdog')
         
         sql = (
             'CREATE TABLE IF NOT EXISTS hotdog ('
@@ -273,9 +273,9 @@ with connection :
         )
         cursor.executemany(sql, dados)
 
-        cursor.execute('DROP TABLE problemas')
+        cursor.execute('DROP TABLE IF EXISTS problemas')
 
-        cursor.execute('DROP TABLE pedidos')
+        cursor.execute('DROP TABLE IF EXISTS pedidos')
 
         sql = (
             'CREATE TABLE IF NOT EXISTS pedidos ('

@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 class Entidade(ABC) :
     db_config = {
         "host": "localhost",
-        "user": "usuario_python",
-        "password": "senha123",
+        "user": "root",
+        "password": "1234",
         "database": "cardapio_digital"
     }
 

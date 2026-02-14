@@ -52,8 +52,8 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
 * RF15: Atualizar status do preparo dos pedidos.
 
 <img 
-  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_painelmenor.png" 
-  width="250"
+  src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin.png" 
+  width="800"
 />
 
 <img 
@@ -65,17 +65,6 @@ Este projeto tem a finalidade de automatizar a realização de pedidos em estabe
   src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/admin_pedidos_menor.png" 
   width="800"
 />
-
-## 📊 Estimativa de Esforço (Planning Poker) 
-O projeto foi estimado em um esforço total de 45 horas de desenvolvimento para os casos de uso mapeados[cite: 182].
-
-| Caso de Uso | Descrição | Esforço (Horas) |
-| :--- | :--- | :--- |
-| UC002 | Selecionar os itens do pedido | 8  |
-| UC007 | Alterar Produtos | 6  |
-| UC006 | Fazer login no sistema | 5 |
-| UC010 | Prover informações sobre problemas | 5  |
-
 
 
 ## 🔮 Trabalhos Futuros 

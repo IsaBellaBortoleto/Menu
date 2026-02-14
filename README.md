@@ -63,3 +63,5 @@ O projeto foi estimado em um esforço total de 45 horas de desenvolvimento para 
 * Inclusão de seleção para pedidos "para viagem" ou "comer no local"[cite: 1055].
 * Integração com sistemas de controle de estoque[cite: 1059].
 * Geração de relatórios detalhados de desempenho administrativo[cite: 1058].
+
+Para mais informações, leia o [artigo disponível no repositório.](https://github.com/IsaBellaBortoleto/AirDrums/blob/main/Artigo.pdf)

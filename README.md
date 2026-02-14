@@ -4,7 +4,7 @@
     Cardápio Digital
   </span>
 </h1>
-<img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/home.png">
+<img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/home2.png">
 
 
 

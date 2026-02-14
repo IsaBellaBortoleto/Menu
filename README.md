@@ -1,11 +1,10 @@
 <h1 align="center">
-  MENU<br>
+  -MENU-<br>
   <span style="font-size: 0.6em; font-weight: normal; display: block; margin-top: 8px;">
     Cardápio Digital
   </span>
 </h1>
-<img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/home.png">
-
+<img src="https://github.com/IsaBellaBortoleto/Menu/blob/main/funcionamento_img/home.png">
 
 
 
